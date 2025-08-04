@@ -1,0 +1,7 @@
+# .gitignore for Astra Child Theme
+.DS_Store
+node_modules/
+*.log
+*.tmp
+.env
+.sass-cache/
