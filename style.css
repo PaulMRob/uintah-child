@@ -1,0 +1,19 @@
+/*
+Theme Name: Astra Child
+Template: astra
+Author: Paul Robertson
+Version: 1.0.0
+*/
+
+.ast-above-header-bar {
+    min-height: 300px !important;
+}
+
+.sub-menu > li a {
+    color: #686868 !important;
+}
+
+.sub-menu>li a:hover {
+    color: white !important;
+    background-color: #686868 !important;
+}
