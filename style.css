@@ -17,3 +17,52 @@ Version: 1.0.0
     color: white !important;
     background-color: #686868 !important;
 }
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+}
+
+.research-post-card {
+    width: 100%;
+}
+
+.people-section {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.highlight-slide {
+    background-size: cover;
+    min-height: 300px;
+}
+
+.person-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.person-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.name-overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em;
+    font-size: 0.9rem;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1em;
+}
