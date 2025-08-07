@@ -16,7 +16,7 @@ function astra_child_enqueue_styles() {
     );
 }
 function register_people_cpt() {
-    register_post_type('person', array(
+    register_post_type('people', array(
         'labels' => array(
             'name' => 'People',
             'singular_name' => 'Person',
@@ -25,7 +25,7 @@ function register_people_cpt() {
         'has_archive' => false,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-id',
-        'supports' => array('title', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail'),
     ));
 }
 add_action('init', 'register_people_cpt');
