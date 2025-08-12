@@ -6,10 +6,13 @@ Version: 1.0.0
 */
 
 /* General Styles */
+.site-content {
+    margin: auto;
+}
 .ast-container {
     margin: 0;
-    padding: 1rem 0;
-    max-width: 100vw;
+    padding: 0;
+    max-width: 100%;
 }
 
 /* Header Styling */
@@ -27,76 +30,115 @@ Version: 1.0.0
     background-color: #686868 !important;
 }
 
-/* Scrollable Container */
+/* Wrapper contains both scroll-container and buttons */
 .scroll-wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
+/* Scrollable Container */
 .scroll-container {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     gap: 1rem;
-    padding: 1rem 0;
+    padding: 2rem 3rem;
     scroll-snap-type: x mandatory;
-    flex: 1;
+    scrollbar-width: none;
+    flex-grow: 1;
 }
 
-.scroll-container>* {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
+.scroll-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Scroll Buttons */
 .scroll-left,
 .scroll-right {
-    background: #333;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    font-size: 2rem;
+    border-radius: 4px;
+    opacity: 0.8;
+    height: 60px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-left {
+    left: 0;
+}
+
+.scroll-right {
+    right: 6rem;
 }
 
 /* Research section */
 .research-section {
-    padding: 2rem;
+    position: relative;
+    padding: 2rem 0;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    padding: 0 3rem;
 }
 
-/* Buttons */
-.scroll-left,
-.scroll-right {
-    background-color: #0073aa;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    z-index: 1;
-    transition: background-color 0.3s;
-}
-
-.scroll-left:hover,
-.scroll-right:hover {
-    background-color: #005177;
-}
-
+/* Post Cards */
 .research-post-card,
 .news-post-card {
-    max-width: 300px;
-    min-height: 400px;
+    position: relative;
+    width: 50rem;
+    height: 200px;
     flex-shrink: 0;
-    background-color: #f7f7f7;
+    background-size: cover;
+    background-position: center;
     padding: 1rem;
     border: 1px solid #ccc;
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     border-radius: 8px;
+}
+
+.research-post-card::before,
+.news-post-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.card-content {
+    position: relative;
+    padding: 1rem;
+    z-index: 1;
+    color: white;
+}
+
+.card-content h3 {
+    margin: 0 0 0.5rem;
+    color: rgb(255, 255, 255);
+}
+
+.card-content p {
+    margin: 0;
 }
 
 /* People Section */
 .section-people {
-    padding: 2rem 0;
+    padding: 0 3rem;
+    margin: 3rem 0;
 }
 
 .people-grid {

@@ -8,30 +8,37 @@ get_header(); ?>
 
 <!-- Research Section -->
 <section id="research" class="post-section research-section">
-    <h2>Research</h2>
-    <div class="scroll-wrapper">
-        <button class="scroll-left">‹</button>
-        <div class="scroll-container">
-            <?php
-            $research_query = new WP_Query([
-                'category_name' => 'research',
-                'posts_per_page' => -1
-            ]);
-            if ($research_query->have_posts()) :
-                while ($research_query->have_posts()) : $research_query->the_post(); ?>
-                    <div class="research-post-card">
-                        <h3><?php the_title(); ?></h3>
-                        <p><?php the_excerpt(); ?></p>
-                    </div>
-                <?php endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
-        </div>
-        <button class="scroll-right">›</button>
-    </div>
-</section>
+  <h2>Research</h2>
+  <div class="scroll-wrapper">
+    <button class="scroll-left">‹</button>
 
+    <div class="scroll-container">
+      <?php
+      $research_query = new WP_Query([
+          'category_name' => 'research',
+          'posts_per_page' => -1
+      ]);
+      if ($research_query->have_posts()) :
+          while ($research_query->have_posts()) : $research_query->the_post(); ?>
+              <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
+                <div class="research-post-card" 
+                    style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>');">
+                    <div class="card-content">
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php the_excerpt(); ?></p>
+                    </div>
+                </div>
+            </a>
+
+          <?php endwhile;
+      endif;
+      wp_reset_postdata();
+      ?>
+    </div>
+    
+    <button class="scroll-right">›</button>
+  </div>
+</section>
 
 <!-- People Section -->
 <section class="section people-section">
@@ -103,10 +110,17 @@ get_header(); ?>
         ]);
         if ($news_query->have_posts()) :
             while ($news_query->have_posts()) : $news_query->the_post(); ?>
-                <div class="news-post-card">
+                <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
+                <div class="research-post-card">
                     <h3><?php the_title(); ?></h3>
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <div class="post-thumbnail">
+                            <?php the_post_thumbnail( 'thumbnail' ); ?>
+                        </div>
+                    <?php endif; ?>
                     <p><?php the_excerpt(); ?></p>
                 </div>
+              </a>
             <?php endwhile;
         endif;
         wp_reset_postdata();

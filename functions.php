@@ -29,3 +29,14 @@ function register_people_cpt() {
     ));
 }
 add_action('init', 'register_people_cpt');
+
+function child_theme_enqueue_scripts() {
+    wp_enqueue_script(
+        'child-scroll-buttons',
+        get_stylesheet_directory_uri() . '/js/scroll-buttons.js',
+        array(), // No dependencies
+        null,    // No version (or set one)
+        true     // Load in footer
+    );
+}
+add_action('wp_enqueue_scripts', 'child_theme_enqueue_scripts');
