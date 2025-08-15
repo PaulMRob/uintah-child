@@ -7,38 +7,15 @@ get_header(); ?>
 <main id="main" class="site-main">
 
 <!-- Research Section -->
-<section id="research" class="post-section research-section">
+ <section id="research" class="post-section research-section">
   <h2>Research</h2>
-  <div class="scroll-wrapper">
-    <button class="scroll-left">‹</button>
-
-    <div class="scroll-container">
-      <?php
-      $research_query = new WP_Query([
-          'category_name' => 'research',
-          'posts_per_page' => -1
-      ]);
-      if ($research_query->have_posts()) :
-          while ($research_query->have_posts()) : $research_query->the_post(); ?>
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
-                <div class="research-post-card" 
-                    style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>');">
-                    <div class="card-content">
-                    <h3><?php the_title(); ?></h3>
-                    <p><?php the_excerpt(); ?></p>
-                    </div>
-                </div>
-            </a>
-
-          <?php endwhile;
-      endif;
-      wp_reset_postdata();
-      ?>
-    </div>
-    
-    <button class="scroll-right">›</button>
-  </div>
+  <?php if ( is_active_sidebar( 'research-section' ) ) : ?>
+      <?php dynamic_sidebar( 'research-section' ); ?>
+  <?php else: ?>
+      <p>Add Research widgets in Appearance → Widgets.</p>
+  <?php endif; ?>
 </section>
+
 
 <!-- People Section -->
 <section class="section people-section">

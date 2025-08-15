@@ -1,6 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// Load custom widgets
+require_once get_stylesheet_directory() . '/widgets/class-research-widget.php';
+
 add_action('wp_enqueue_scripts', 'astra_child_enqueue_styles');
 function astra_child_enqueue_styles() {
     wp_enqueue_style(
@@ -34,9 +37,33 @@ function child_theme_enqueue_scripts() {
     wp_enqueue_script(
         'child-scroll-buttons',
         get_stylesheet_directory_uri() . '/js/scroll-buttons.js',
-        array(), // No dependencies
-        null,    // No version (or set one)
-        true     // Load in footer
+        array(), 
+        null,    
+        true     
     );
 }
 add_action('wp_enqueue_scripts', 'child_theme_enqueue_scripts');
+
+
+// Register widget areas for homepage sections
+function astra_child_register_home_widgets() {
+    $sections = [
+        'research-section' => 'Research Section',
+        'people-section'   => 'People Section',
+        'highlight-section'=> 'Highlight Section',
+        'news-section'     => 'News Section',
+    ];
+
+    foreach ( $sections as $id => $name ) {
+        register_sidebar( array(
+            'name'          => __( $name, 'astra-child' ),
+            'id'            => $id,
+            'description'   => __( "Widgets for the {$name} on the homepage.", 'astra-child' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        ));
+    }
+}
+add_action( 'widgets_init', 'astra_child_register_home_widgets' );
