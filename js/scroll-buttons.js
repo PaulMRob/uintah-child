@@ -1,17 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const scrollContainer = document.querySelector(".scroll-container");
-    const scrollLeftBtn = document.querySelector(".scroll-left");
-    const scrollRightBtn = document.querySelector(".scroll-right");
+    // Find all scroll wrappers on the page
+    const scrollWrappers = document.querySelectorAll(".scroll-wrapper");
 
-    if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
-        scrollLeftBtn.addEventListener("click", () => {
-            scrollContainer.scrollBy({ left: -500, behavior: "smooth" });
-        });
+    scrollWrappers.forEach(wrapper => {
+        const container = wrapper.querySelector(".scroll-container");
+        const leftBtn = wrapper.querySelector(".scroll-left");
+        const rightBtn = wrapper.querySelector(".scroll-right");
 
-        scrollRightBtn.addEventListener("click", () => {
-            scrollContainer.scrollBy({ left: 500, behavior: "smooth" });
-        });
-    } else {
-        console.warn("Scroll buttons or container not found.");
-    }
+        if (container && leftBtn && rightBtn) {
+            leftBtn.addEventListener("click", () => {
+                container.scrollBy({ left: -500, behavior: "smooth" });
+            });
+
+            rightBtn.addEventListener("click", () => {
+                container.scrollBy({ left: 500, behavior: "smooth" });
+            });
+        } else {
+            console.warn("Missing scroll elements in:", wrapper);
+        }
+    });
 });

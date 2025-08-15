@@ -6,13 +6,37 @@ Version: 1.0.0
 */
 
 /* General Styles */
-.site-content {
-    margin: auto;
+body.page-template-template-home-php .ast-container,
+body.home .ast-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
-.ast-container {
-    margin: 0;
-    padding: 0;
+
+body.blog .ast-container,
+body.single-post .ast-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+/* Prevent distortion of blog card featured images */
+.blog .ast-blog-featured-section img,
+.archive .ast-blog-featured-section img {
+    width: 100%;
+    height: auto;
+    /* maintains aspect ratio */
+    object-fit: cover;
+    /* crops instead of squishing */
+    display: block;
+}
+
+main.site-main {
+    width: 100%;
     max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Header Styling */
@@ -30,27 +54,27 @@ Version: 1.0.0
     background-color: #686868 !important;
 }
 
-/* Wrapper contains both scroll-container and buttons */
+/* Scrollable Container */
 .scroll-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 100vw;
+    padding: 0 4rem;
     box-sizing: border-box;
 }
 
-/* Scrollable Container */
 .scroll-container {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
     gap: 1rem;
-    padding: 2rem 3rem;
+    padding: 0 3rem 0 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     flex-grow: 1;
+    z-index: 1;
 }
 
 .scroll-container::-webkit-scrollbar {
@@ -58,12 +82,23 @@ Version: 1.0.0
 }
 
 /* Scroll Buttons */
-.scroll-left,
+.scroll-left {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
 .scroll-right {
     position: absolute;
     top: 50%;
+    right: 1rem;
     transform: translateY(-50%);
     z-index: 10;
+}
+
+.scroll-left, .scroll-right {
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     border: none;
@@ -76,39 +111,54 @@ Version: 1.0.0
     width: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 
-.scroll-left {
-    left: 0;
-}
-
-.scroll-right {
-    right: 6rem;
+/* Hide scroll buttons on mobile */
+@media (max-width: 768px) {
+    .scroll-wrapper {
+        padding: 0;
+    }
+    .scroll-left,
+    .scroll-right {
+        display: none;
+    }
 }
 
 /* Research section */
 .research-section {
     position: relative;
-    padding: 2rem 0;
     background-color: #f8f8f8;
     overflow: hidden;
-    padding: 0 3rem;
+}
+.research-section h2 {
+    transform: translate(5%, 0);
 }
 
 /* Post Cards */
+/* Default: Mobile View */
 .research-post-card,
 .news-post-card {
     position: relative;
-    width: 50rem;
-    height: 200px;
-    flex-shrink: 0;
+    z-index: 1;
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
     background-size: cover;
     background-position: center;
     padding: 1rem;
     border: 1px solid #ccc;
-    /* scroll-snap-align: start; */
     border-radius: 8px;
+}
+
+/* Desktop: wider cards */
+@media (min-width: 1024px) {
+
+    .research-post-card,
+    .news-post-card {
+        width: 850px;
+        max-width: 850px;
+    }
 }
 
 .research-post-card::before,
@@ -136,14 +186,22 @@ Version: 1.0.0
 }
 
 /* People Section */
-.section-people {
-    padding: 0 3rem;
+.people-section {
+    padding: 0 0 3rem 0;
     margin: 3rem 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+.people-section h2 {
+    transform: translate(45%, 0);
+    color: white;
 }
 
 .people-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 300px));
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -176,6 +234,18 @@ Version: 1.0.0
     font-size: 0.85rem;
 }
 
+@media (max-width: 768px) {
+    .people-section {
+        padding: 0 0 1rem 0;
+        margin: 0;
+    }
+
+    .people-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+}
+
 /* Highlight Carousel */
 #highlight-section {
     margin: 0 !important;
@@ -192,7 +262,7 @@ Version: 1.0.0
     position: relative;
     margin: 0 !important;
     padding: 0 !important;
-    width: 100vw;
+    width: 100%;
     height: 60vh;
     max-height: 418px;
 }
@@ -238,6 +308,16 @@ Version: 1.0.0
 
 .highlight-button:hover {
     background-color: #efefef;
+}
+
+/* News Section */
+.news-section {
+    position: relative;
+    background-color: #f8f8f8;
+    overflow: hidden;
+}
+.news-section h2 {
+    transform: translate(5%, 0);
 }
 
 /* Utility */
