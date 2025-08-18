@@ -8,7 +8,7 @@ get_header(); ?>
 
 <!-- Research Section -->
  <section id="research" class="post-section research-section">
-  <h2>Research</h2>
+  <!-- <h2>Research</h2> -->
   <?php if ( is_active_sidebar( 'research-section' ) ) : ?>
       <?php dynamic_sidebar( 'research-section' ); ?>
   <?php else: ?>
@@ -20,92 +20,36 @@ get_header(); ?>
 <!-- People Section -->
 <section class="section people-section">
     <h2 class="section-title">People</h2>
-    <div class="people-grid">
-        <?php
-        $people_query = new WP_Query([
-            'post_type' => 'people',
-            'posts_per_page' => -1,
-        ]);
-        if ($people_query->have_posts()) :
-            while ($people_query->have_posts()) : $people_query->the_post();
-                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                ?>
-                <a href="<?php the_permalink(); ?>" class="person-card">
-                    <?php if ($image_url): ?>
-                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title_attribute(); ?>">
-                    <?php endif; ?>
-                    <div class="name-overlay"><?php the_title(); ?></div>
-                </a>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        endif;
-        ?>
-    </div>
+
+    <?php 
+    if ( is_active_sidebar( 'people-section' ) ) : 
+        dynamic_sidebar( 'people-section' ); 
+    else : 
+        echo '<p>No people found. Please add the People Widget.</p>';
+    endif; 
+    ?>
 </section>
 
 <!-- Highlight Section -->
 <section id="highlight-section" class="highlight-section">
-  <?php
-    $highlight_query = new WP_Query(array(
-      'post_type' => 'post',
-      'category_name' => 'highlight',
-      'posts_per_page' => 1
-    ));
-
-    if ($highlight_query->have_posts()) :
-      while ($highlight_query->have_posts()) : $highlight_query->the_post();
-        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-  ?>
-    <div class="highlight-image-wrapper">
-      <?php if ($image_url): ?>
-        <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>" class="highlight-image">
-      <?php endif; ?>
-
-      <div class="highlight-overlay">
-        <h2 class="highlight-title"><?php the_title(); ?></h2>
-        <a href="<?php the_permalink(); ?>" class="highlight-button">Read More</a>
-      </div>
-    </div>
-  <?php
-      endwhile;
-      wp_reset_postdata();
-    else :
-      echo '<p>No highlights found.</p>';
-    endif;
-  ?>
+    <?php if ( is_active_sidebar( 'highlight-section' ) ) : ?>
+        <?php dynamic_sidebar( 'highlight-section' ); ?>
+    <?php else : 
+      echo '<p>No highlights found. Please add the Highlight Widget.</p>';
+    endif; 
+    ?>
 </section>
+        
+
 
 <!-- News Section -->
  <section id="news" class="post-section news-section">
-  <h2>News</h2>
-  <div class="scroll-wrapper">
-    <button class="scroll-left">‹</button>
-    <div class="scroll-container">
-      <?php
-      $news_query = new WP_Query([
-          'category_name' => 'news',
-          'posts_per_page' => -1
-      ]);
-      if ($news_query->have_posts()) :
-          while ($news_query->have_posts()) : $news_query->the_post(); ?>
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
-                <div class="news-post-card" 
-                    style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ); ?>');">
-                    <div class="card-content">
-                    <h3><?php the_title(); ?></h3>
-                    <p><?php the_excerpt(); ?></p>
-                    </div>
-                </div>
-            </a>
-
-          <?php endwhile;
-      endif;
-      wp_reset_postdata();
-      ?>
-    </div>
-    <button class="scroll-right">›</button>
-  </div>
+  <!-- <h2>News</h2> -->
+  <?php if ( is_active_sidebar( 'news-section' ) ) : ?>
+      <?php dynamic_sidebar( 'news-section' ); ?>
+  <?php else: ?>
+      <p>Add News widgets in Appearance → Widgets.</p>
+  <?php endif; ?>
 </section>
 </main>
 

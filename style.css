@@ -234,6 +234,29 @@ main.site-main {
     font-size: 0.85rem;
 }
 
+.people-widget.people-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.people-widget.people-layout-row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.people-widget .person {
+    text-align: center;
+}
+
+.people-widget .person img {
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
 @media (max-width: 768px) {
     .people-section {
         padding: 0 0 1rem 0;
@@ -245,6 +268,7 @@ main.site-main {
         gap: 0;
     }
 }
+
 
 /* Highlight Carousel */
 #highlight-section {
@@ -303,7 +327,6 @@ main.site-main {
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    /* transition: background 0.3s ease; */
 }
 
 .highlight-button:hover {
@@ -324,3 +347,4 @@ main.site-main {
 .post-section {
     margin: 3rem 0;
 }
+

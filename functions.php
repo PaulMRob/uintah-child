@@ -3,6 +3,9 @@ if (!defined('ABSPATH')) exit;
 
 // Load custom widgets
 require_once get_stylesheet_directory() . '/widgets/class-research-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-news-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-people-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-highlight-widget.php';
 
 add_action('wp_enqueue_scripts', 'astra_child_enqueue_styles');
 function astra_child_enqueue_styles() {
