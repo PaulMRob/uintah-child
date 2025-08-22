@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-class Research_Widget extends WP_Widget {
+class Projects_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-            'research_widget',
-            __('Research Posts', 'astra-child'),
-            ['description' => __('Displays Research posts in scroll format', 'astra-child')]
+            'projects_widget',
+            __('Projects Posts', 'astra-child'),
+            ['description' => __('Displays Projects posts in scroll format', 'astra-child')]
         );
     }
 
@@ -15,7 +15,7 @@ class Research_Widget extends WP_Widget {
     public function widget( $args, $instance ) {
         echo $args['before_widget'];
 
-        $title       = !empty($instance['title']) ? $instance['title'] : __('Research', 'astra-child');
+        $title       = !empty($instance['title']) ? $instance['title'] : __('Projects', 'astra-child');
         $num_posts   = !empty($instance['num_posts']) ? intval($instance['num_posts']) : -1;
         $show_excerpt = !empty($instance['show_excerpt']) ? true : false;
         $card_width  = !empty($instance['card_width']) ? $instance['card_width'] : '850px';
@@ -30,18 +30,18 @@ class Research_Widget extends WP_Widget {
         echo '<button class="scroll-left">‹</button>';
         echo '<div class="scroll-container">';
 
-        $research_query = new WP_Query([
-            'category_name'  => 'research',
+        $projects_query = new WP_Query([
+            'category_name'  => 'projects',
             'posts_per_page' => $num_posts,
             'orderby'        => $sort_order === 'RAND' ? 'rand' : 'date',
         ]);
 
-        if ($research_query->have_posts()) :
-            while ($research_query->have_posts()) : $research_query->the_post();
+        if ($projects_query->have_posts()) :
+            while ($projects_query->have_posts()) : $projects_query->the_post();
                 $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
                 ?>
                 <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
-                    <div class="research-post-card" 
+                    <div class="projects-post-card" 
                         style="background-image: url('<?php echo esc_url($thumbnail); ?>'); width: <?php echo esc_attr($card_width); ?>;">
                         <?php if ($overlay) : ?>
                             <div class="card-overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
@@ -67,7 +67,7 @@ class Research_Widget extends WP_Widget {
 
     //admin options for widget
     public function form( $instance ) {
-        $title       = !empty($instance['title']) ? $instance['title'] : __('Research', 'astra-child');
+        $title       = !empty($instance['title']) ? $instance['title'] : __('Projects', 'astra-child');
         $num_posts   = !empty($instance['num_posts']) ? intval($instance['num_posts']) : -1;
         $show_excerpt = !empty($instance['show_excerpt']) ? (bool)$instance['show_excerpt'] : false;
         $card_width  = !empty($instance['card_width']) ? $instance['card_width'] : '850px';
@@ -167,5 +167,5 @@ class Research_Widget extends WP_Widget {
 
 //register widget
 add_action('widgets_init', function(){
-    register_widget('Research_Widget');
+    register_widget('Projects_Widget');
 });
