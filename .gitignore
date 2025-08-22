@@ -5,3 +5,4 @@ node_modules/
 *.tmp
 .env
 .sass-cache/
+vendor/
