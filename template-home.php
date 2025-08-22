@@ -6,13 +6,13 @@ get_header(); ?>
 
 <main id="main" class="site-main">
 
-<!-- Research Section -->
- <section id="research" class="post-section research-section">
-  <!-- <h2>Research</h2> -->
-  <?php if ( is_active_sidebar( 'research-section' ) ) : ?>
-      <?php dynamic_sidebar( 'research-section' ); ?>
+<!-- Project Section -->
+ <section id="project" class="post-section project-section">
+  <!-- <h2>Projects</h2> -->
+  <?php if ( is_active_sidebar( 'project-section' ) ) : ?>
+      <?php dynamic_sidebar( 'project-section' ); ?>
   <?php else: ?>
-      <p>Add Research widgets in Appearance → Widgets.</p>
+      <p>Add Project widgets in Appearance → Widgets.</p>
   <?php endif; ?>
 </section>
 
@@ -42,13 +42,13 @@ get_header(); ?>
         
 
 
-<!-- News Section -->
- <section id="news" class="post-section news-section">
-  <!-- <h2>News</h2> -->
-  <?php if ( is_active_sidebar( 'news-section' ) ) : ?>
-      <?php dynamic_sidebar( 'news-section' ); ?>
+<!-- past projects Section -->
+ <section id="past-projects" class="post-section past-projects-section">
+  <!-- <h2>Pas Projects</h2> -->
+  <?php if ( is_active_sidebar( 'past-projects-section' ) ) : ?>
+      <?php dynamic_sidebar( 'past-projects-section' ); ?>
   <?php else: ?>
-      <p>Add News widgets in Appearance → Widgets.</p>
+      <p>Add Pas Projects widgets in Appearance → Widgets.</p>
   <?php endif; ?>
 </section>
 </main>
