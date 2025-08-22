@@ -44,11 +44,11 @@ get_header(); ?>
 
 <!-- past projects Section -->
  <section id="past-projects" class="post-section past-projects-section">
-  <!-- <h2>Pas Projects</h2> -->
+  <!-- <h2>Past Projects</h2> -->
   <?php if ( is_active_sidebar( 'past-projects-section' ) ) : ?>
       <?php dynamic_sidebar( 'past-projects-section' ); ?>
   <?php else: ?>
-      <p>Add Pas Projects widgets in Appearance → Widgets.</p>
+      <p>Add Past Projects widgets in Appearance → Widgets.</p>
   <?php endif; ?>
 </section>
 </main>
