@@ -44,7 +44,7 @@ class Highlight_Widget extends WP_Widget {
             endwhile;
             wp_reset_postdata();
         else :
-            echo '<p>No highlights found.</p>';
+            echo '<p>No HIGHlights found.</p>';
         endif;
 
         echo '</div>'; // end widget wrapper

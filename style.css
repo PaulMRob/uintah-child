@@ -19,6 +19,7 @@ body.home .ast-container {
 .post-date {
     display: none !important;
 }
+
 body.blog .ast-container,
 body.single-post .ast-container {
     max-width: 1200px !important;
@@ -130,20 +131,20 @@ main.site-main {
     }
 }
 
-/* Research section */
-.research-section {
+/* Projects section */
+.project-section {
     position: relative;
     background-color: #f8f8f8;
     overflow: hidden;
 }
-.research-section h2 {
+.project-section h2 {
     transform: translate(5%, 0);
 }
 
 /* Post Cards */
 /* Default: Mobile View */
-.research-post-card,
-.news-post-card {
+.projects-post-card,
+.past-projects-post-card {
     position: relative;
     z-index: 1;
     width: 100%;
@@ -159,15 +160,15 @@ main.site-main {
 /* Desktop: wider cards */
 @media (min-width: 1024px) {
 
-    .research-post-card,
-    .news-post-card {
+    .projects-post-card,
+    .past-projects-post-card {
         width: 850px;
         max-width: 850px;
     }
 }
 
-.research-post-card::before,
-.news-post-card::before {
+.projects-post-card::before,
+.past-projects-post-card::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -339,12 +340,12 @@ main.site-main {
 }
 
 /* News Section */
-.news-section {
+.past-projects-section {
     position: relative;
     background-color: #f8f8f8;
     overflow: hidden;
 }
-.news-section h2 {
+.past-projects-section h2 {
     transform: translate(5%, 0);
 }
 
