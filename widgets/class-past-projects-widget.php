@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-class News_Widget extends WP_Widget {
+class PastProjects_Widget extends WP_Widget {
 
     public function __construct() {
         parent::__construct(
-            'news_widget',
-            __('News Posts', 'astra-child'),
-            ['description' => __('Displays News posts in scroll format', 'astra-child')]
+            'past_projects_widget',
+            __('Past Projects Posts', 'astra-child'),
+            ['description' => __('Displays Past Projects posts in scroll format', 'astra-child')]
         );
     }
 
@@ -15,7 +15,7 @@ class News_Widget extends WP_Widget {
     public function widget( $args, $instance ) {
         echo $args['before_widget'];
 
-        $title       = !empty($instance['title']) ? $instance['title'] : __('News', 'astra-child');
+        $title       = !empty($instance['title']) ? $instance['title'] : __('Past Projects', 'astra-child');
         $num_posts   = !empty($instance['num_posts']) ? intval($instance['num_posts']) : -1;
         $show_excerpt = !empty($instance['show_excerpt']) ? true : false;
         $card_width  = !empty($instance['card_width']) ? $instance['card_width'] : '850px';
@@ -30,18 +30,18 @@ class News_Widget extends WP_Widget {
         echo '<button class="scroll-left">‹</button>';
         echo '<div class="scroll-container">';
 
-        $news_query = new WP_Query([
-            'category_name'  => 'news',
+        $past_projects_query = new WP_Query([
+            'category_name'  => 'past-projects',
             'posts_per_page' => $num_posts,
             'orderby'        => $sort_order === 'RAND' ? 'rand' : 'date',
         ]);
 
-        if ($news_query->have_posts()) :
-            while ($news_query->have_posts()) : $news_query->the_post();
+        if ($past_projects_query->have_posts()) :
+            while ($past_projects_query->have_posts()) : $past_projects_query->the_post();
                 $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'large');
                 ?>
                 <a href="<?php echo esc_url( get_permalink() ); ?>" class="card-link">
-                    <div class="news-post-card" 
+                    <div class="past-projects-post-card" 
                         style="background-image: url('<?php echo esc_url($thumbnail); ?>'); width: <?php echo esc_attr($card_width); ?>;">
                         <?php if ($overlay) : ?>
                             <div class="card-overlay" style="background-color: <?php echo esc_attr($overlay_color); ?>;"></div>
@@ -67,7 +67,7 @@ class News_Widget extends WP_Widget {
 
     //admin options for widget
     public function form( $instance ) {
-        $title       = !empty($instance['title']) ? $instance['title'] : __('News', 'astra-child');
+        $title       = !empty($instance['title']) ? $instance['title'] : __('Past Projects', 'astra-child');
         $num_posts   = !empty($instance['num_posts']) ? intval($instance['num_posts']) : -1;
         $show_excerpt = !empty($instance['show_excerpt']) ? (bool)$instance['show_excerpt'] : false;
         $card_width  = !empty($instance['card_width']) ? $instance['card_width'] : '850px';
@@ -167,5 +167,5 @@ class News_Widget extends WP_Widget {
 
 //register widget
 add_action('widgets_init', function(){
-    register_widget('News_Widget');
+    register_widget('PastProjects_Widget');
 });

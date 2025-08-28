@@ -51,7 +51,7 @@ add_action('wp_enqueue_scripts', 'child_theme_enqueue_scripts');
 // Register widget areas for homepage sections
 function astra_child_register_home_widgets() {
     $sections = [
-        'projects-section' => 'Projects Section',
+        'project-section' => 'Projects Section',
         'people-section'   => 'People Section',
         'highlight-section'=> 'Highlight Section',
         'past-projects-section'     => 'Past Projects Section',

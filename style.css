@@ -14,6 +14,11 @@ body.home .ast-container {
     padding-right: 0 !important;
 }
 
+.entry-meta,
+.author-info,
+.post-date {
+    display: none !important;
+}
 body.blog .ast-container,
 body.single-post .ast-container {
     max-width: 1200px !important;
