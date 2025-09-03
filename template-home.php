@@ -19,8 +19,7 @@ get_header(); ?>
 
 <!-- People Section -->
 <section class="section people-section">
-    <h2 class="section-title">People</h2>
-
+    
     <?php 
     if ( is_active_sidebar( 'people-section' ) ) : 
         dynamic_sidebar( 'people-section' ); 

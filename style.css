@@ -193,14 +193,14 @@ main.site-main {
 
 /* People Section */
 .people-section {
-    padding: 0 0 3rem 0;
+    padding:3rem;
     margin: 3rem 0;
     box-sizing: border-box;
     background-color: black;
 }
 .people-section h2 {
-    transform: translate(45%, 0);
-    color: white;
+    /* transform: translate(45%, 0); */
+    /* color: white; */
 }
 
 .people-grid {
@@ -279,7 +279,7 @@ main.site-main {
 /* Highlight Carousel */
 #highlight-section {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 10rem !important;
 }
 
 .highlight-section {
