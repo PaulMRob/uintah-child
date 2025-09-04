@@ -2,10 +2,10 @@
 if (!defined('ABSPATH')) exit;
 
 // Load custom widgets
-require_once get_stylesheet_directory() . '/widgets/class-projects-widget.php';
-require_once get_stylesheet_directory() . '/widgets/class-past-projects-widget.php';
-require_once get_stylesheet_directory() . '/widgets/class-people-widget.php';
-require_once get_stylesheet_directory() . '/widgets/class-highlight-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-carousel-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-feature-grid-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-banner-mid-widget.php';
+require_once get_stylesheet_directory() . '/widgets/class-carousel-alt-widget.php';
 
 add_action('wp_enqueue_scripts', 'astra_child_enqueue_styles');
 function astra_child_enqueue_styles() {
@@ -51,10 +51,10 @@ add_action('wp_enqueue_scripts', 'child_theme_enqueue_scripts');
 // Register widget areas for homepage sections
 function astra_child_register_home_widgets() {
     $sections = [
-        'project-section' => 'Projects Section',
-        'people-section'   => 'People Section',
-        'highlight-section'=> 'Highlight Section',
-        'past-projects-section'     => 'Past Projects Section',
+        'carousel-section'       => 'Carousel Section',
+        'feature-grid-section'   => 'Feature Grid Section',
+        'banner-mid-section'     => 'Banner Mid Section',
+        'carousel-alt-section'   => 'Carousel Alt Section',
     ];
 
     foreach ( $sections as $id => $name ) {

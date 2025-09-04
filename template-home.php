@@ -6,50 +6,42 @@ get_header(); ?>
 
 <main id="main" class="site-main">
 
-<!-- Project Section -->
- <section id="project" class="post-section project-section">
-  <!-- <h2>Projects</h2> -->
-  <?php if ( is_active_sidebar( 'project-section' ) ) : ?>
-      <?php dynamic_sidebar( 'project-section' ); ?>
-  <?php else: ?>
-      <p>Add Project widgets in Appearance → Widgets.</p>
-  <?php endif; ?>
-</section>
+    <!-- Carousel Section (Projects) -->
+    <section id="carousel-section" class="post-section carousel-section">
+        <?php if ( is_active_sidebar( 'carousel-section' ) ) : ?>
+            <?php dynamic_sidebar( 'carousel-section' ); ?>
+        <?php else : ?>
+            <p>Add Carousel widgets in Appearance → Widgets.</p>
+        <?php endif; ?>
+    </section>
 
+    <!-- Feature Grid Section (People, Team, etc.) -->
+    <section id="feature-grid-section" class="section feature-grid-section">
+        <?php if ( is_active_sidebar( 'feature-grid-section' ) ) : ?>
+            <?php dynamic_sidebar( 'feature-grid-section' ); ?>
+        <?php else : ?>
+            <p>Add Feature Grid widget in Appearance → Widgets.</p>
+        <?php endif; ?>
+    </section>
 
-<!-- People Section -->
-<section class="section people-section">
-    
-    <?php 
-    if ( is_active_sidebar( 'people-section' ) ) : 
-        dynamic_sidebar( 'people-section' ); 
-    else : 
-        echo '<p>No people found. Please add the People Widget.</p>';
-    endif; 
-    ?>
-</section>
+    <!-- Banner Mid Section (Highlights) -->
+    <section id="banner-mid-section" class="highlight-section banner-mid-section">
+        <?php if ( is_active_sidebar( 'banner-mid-section' ) ) : ?>
+            <?php dynamic_sidebar( 'banner-mid-section' ); ?>
+        <?php else : ?>
+            <p>Add Mid-Page Banner (Banner-Mid) in Appearence → Widgets.</p>
+        <?php endif; ?>
+    </section>
 
-<!-- Highlight Section -->
-<section id="highlight-section" class="highlight-section">
-    <?php if ( is_active_sidebar( 'highlight-section' ) ) : ?>
-        <?php dynamic_sidebar( 'highlight-section' ); ?>
-    <?php else : 
-      echo '<p>No highlights found. Please add the Highlight Widget.</p>';
-    endif; 
-    ?>
-</section>
-        
+    <!-- Carousel Alt Section (Past Projects) -->
+    <section id="carousel-alt-section" class="post-section carousel-alt-section">
+        <?php if ( is_active_sidebar( 'carousel-alt-section' ) ) : ?>
+            <?php dynamic_sidebar( 'carousel-alt-section' ); ?>
+        <?php else : ?>
+            <p>Add Carousel Alt widgets in Appearance → Widgets.</p>
+        <?php endif; ?>
+    </section>
 
-
-<!-- past projects Section -->
- <section id="past-projects" class="post-section past-projects-section">
-  <!-- <h2>Past Projects</h2> -->
-  <?php if ( is_active_sidebar( 'past-projects-section' ) ) : ?>
-      <?php dynamic_sidebar( 'past-projects-section' ); ?>
-  <?php else: ?>
-      <p>Add Past Projects widgets in Appearance → Widgets.</p>
-  <?php endif; ?>
-</section>
 </main>
 
 <?php get_footer(); ?>
