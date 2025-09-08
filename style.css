@@ -192,18 +192,18 @@ main.site-main {
 }
 
 /* People Section */
-.people-section {
+.feature-grid-section {
     padding:3rem;
     margin: 3rem 0;
     box-sizing: border-box;
     background-color: black;
 }
-.people-section h2 {
+.feature-grid-section h2 {
     /* transform: translate(45%, 0); */
     /* color: white; */
 }
 
-.people-grid {
+.feature-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 300px));
     grid-template-rows: repeat(3, 1fr);

@@ -25,7 +25,7 @@ class Carousel_Widget extends WP_Widget {
     $auto_scroll   = !empty($instance['automatic_scroll']);
     $category      = !empty($instance['category']) ? $instance['category'] : '';
 
-    // Build dynamic classes
+    // build dynamic classes
     $card_class    = $category ? sanitize_html_class($category . '-post-card') : 'carousel-post-card';
     $wrapper_class = $category ? sanitize_html_class($category . '-carousel-wrapper') : 'carousel-wrapper';
 

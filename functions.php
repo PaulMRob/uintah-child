@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit;
 require_once get_stylesheet_directory() . '/widgets/class-carousel-widget.php';
 require_once get_stylesheet_directory() . '/widgets/class-feature-grid-widget.php';
 require_once get_stylesheet_directory() . '/widgets/class-banner-mid-widget.php';
-require_once get_stylesheet_directory() . '/widgets/class-carousel-alt-widget.php';
+
 
 add_action('wp_enqueue_scripts', 'astra_child_enqueue_styles');
 function astra_child_enqueue_styles() {
